@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Квест Ловушка — Во все тяжкие | Нальчик</title>
+  <meta name="description" content="Квест Ловушка в Нальчике. Онлайн-бронирование квеста Во все тяжкие. Адрес, цены, расписание, телефон." />
+  <meta name="theme-color" content="#0d0d12" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script src="config.js"></script>
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+  <header class="hero" id="top">
+    <nav class="nav">
+      <a class="brand" href="#top" aria-label="Квест Ловушка">
+        <span class="brand-mark">Л</span>
+        <span><b>Квест Ловушка</b><small>Нальчик</small></span>
+      </a>
+      <div class="nav-actions">
+        <a href="#booking" class="nav-link">Бронь</a>
+        <a href="tel:+79280835335" class="btn btn-small">Позвонить</a>
+      </div>
+    </nav>
+
+    <section class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Квест в Нальчике</p>
+        <h1>«Во все тяжкие»</h1>
+        <p class="lead">Забронируйте удобное время онлайн. Администратор свяжется и подтвердит бронь.</p>
+        <div class="hero-actions">
+          <a href="#booking" class="btn btn-primary">Выбрать время</a>
+          <a href="tel:+79280835335" class="btn btn-ghost">8 (928) 083-53-35</a>
+        </div>
+        <div class="stats" aria-label="Параметры квеста">
+          <div><strong>60 мин</strong><span>длительность</span></div>
+          <div><strong>2–6</strong><span>игроков</span></div>
+          <div><strong>12+</strong><span>возраст</span></div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-inner">
+          <span class="badge">Онлайн-бронь</span>
+          <h2>Выберите слот</h2>
+          <p>Цены и расписание вынесены в файл <code>config.js</code>, чтобы их можно было быстро менять без правки сайта.</p>
+          <a href="#booking" class="btn btn-primary btn-wide">Перейти к расписанию</a>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="section section-dark">
+      <div class="container cards" id="features"></div>
+    </section>
+
+    <section class="section" id="prices">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">Стоимость</p>
+          <h2>Цены по времени</h2>
+          <p class="muted">Измените цены один раз в <code>config.js</code> — сайт сразу начнёт показывать новые значения.</p>
+        </div>
+        <div class="price-list" id="priceList"></div>
+      </div>
+    </section>
+
+    <section class="section booking-section" id="booking">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Бронирование</p>
+          <h2>Выберите дату и время</h2>
+          <p class="muted">Нажмите на свободный слот и оставьте контакт. Бронь подтверждается администратором.</p>
+        </div>
+        <div class="calendar-toolbar">
+          <button class="tool-btn" id="prevDays" type="button">← Раньше</button>
+          <button class="tool-btn" id="todayDays" type="button">Сегодня</button>
+          <button class="tool-btn" id="nextDays" type="button">Позже →</button>
+        </div>
+        <div class="booking-grid" id="bookingGrid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section section-dark">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">Адрес</p>
+          <h2>Как нас найти</h2>
+          <p class="address" id="addressText">г. Нальчик, ул. Шогенцукова, 22</p>
+          <div class="contact-row">
+            <a class="btn btn-primary" href="tel:+79280835335" id="phoneLink">Позвонить</a>
+            <a class="btn btn-ghost" href="mailto:questnalchik@gmail.com" id="emailLink">Написать</a>
+          </div>
+        </div>
+        <div class="rules" id="rules"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Квест Ловушка, Нальчик</span>
+      <a href="#booking">Забронировать</a>
+    </div>
+  </footer>
+
+  <dialog class="modal" id="bookingModal">
+    <form method="dialog" class="modal-card" id="bookingForm">
+      <button class="modal-close" value="cancel" aria-label="Закрыть">×</button>
+      <p class="eyebrow">Заявка на бронь</p>
+      <h3 id="modalTitle">Выбранный слот</h3>
+      <input type="hidden" name="date" id="formDate" />
+      <input type="hidden" name="time" id="formTime" />
+      <input type="hidden" name="price" id="formPrice" />
+      <label>Имя
+        <input name="name" required autocomplete="name" placeholder="Как к вам обращаться" />
+      </label>
+      <label>Телефон
+        <input name="phone" required inputmode="tel" autocomplete="tel" placeholder="+7 ..." />
+      </label>
+      <label>Комментарий
+        <textarea name="comment" rows="3" placeholder="Вопрос, повод, количество игроков"></textarea>
+      </label>
+      <button class="btn btn-primary btn-wide" type="submit">Отправить заявку</button>
+      <p class="form-note" id="formNote">После заявки администратор свяжется для подтверждения.</p>
+    </form>
+  </dialog>
+</body>
+</html>
